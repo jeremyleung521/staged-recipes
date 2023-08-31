@@ -1,0 +1,58 @@
+{% set name = "lpath" %}
+{% set version = "0.9.3" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }} - {{ version }}.tar.gz
+  url: https://github.com/jeremyleung521/lpath/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: f7caba06e5f4a116adf296c91b219c44d9ac2e066c630f33a8a945e6589827a9
+ 
+build:
+  script: {{ PYTHON }} -m pip install --no-deps -vv .
+  number: 0
+
+requirements:
+  host:
+    - python >=3.8
+    - setuptools >=61.0
+    - versioningit >=2.0,<3.dev0
+    - pip
+  run:
+    - python >=3.8
+    - scikit-learn
+    - scipy
+    - numpy
+    - tqdm
+    - networkx
+    - matplotlib-base
+    - importlib-resources  # [py<310]
+    - pip
+    - ray-default # [not osx]
+    - pylcs
+    - timedinput
+
+test:
+  imports:
+    - lpath
+    - lpath.discretize
+    - lpath.extract
+    - lpath.match
+    - lpath.plot
+  commands:
+    - pip check
+  requires:
+    - pip
+    - pytest
+
+about:
+  home: https://github.com/jeremyleung521/lpath
+  summary: "A user-friendly, Python tool for clustering pathways from molecular dynamics simulations."
+  license: MIT
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - jeremyleung521
