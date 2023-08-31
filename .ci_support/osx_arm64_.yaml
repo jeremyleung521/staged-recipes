@@ -8,3 +8,7 @@ macos_machine:
 - arm64-apple-darwin20.0.0
 target_platform:
 - osx-arm64
+
+CONDA_BUILD_SYSROOT:
+- /usr/local/opt/MacOSX11.0.sdk
+

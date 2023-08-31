@@ -17,10 +17,10 @@ requirements:
   host:
     - pip
     - pybind11 >=2.2
-    - python
+    - python >=3.5
   run:
     - pybind11 >=2.2
-    - python
+    - python >=3.5
 
 about:
   home: "https://github.com/kuangkzh/pylcs"
