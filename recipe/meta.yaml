@@ -1,0 +1,42 @@
+{% set name = "timedinput" %}
+{% set version = "0.1.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/timedinput-{{ version }}.tar.gz
+  sha256: 86ab8f178163ea98e066480e39b36acd933fa6a94509a46274edeb7671327c35
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+
+requirements:
+  host:
+    - python
+    - setuptools
+    - pip
+  run:
+    - python
+
+test:
+  imports:
+    - timedinput
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  summary: Timeout for python inputs
+  dev_url: https://github.com/kerollosy/timedinput
+  license: MIT
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - kerollosy
+    - jeremyleung521
