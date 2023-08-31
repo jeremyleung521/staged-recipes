@@ -1,0 +1,37 @@
+{% set name = "pylcs" %}
+{% set version = "0.0.8" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: afc619ebff8be8678c6675396c36fc232bfb15e32675a9f3e1d6a5cdc36c4223
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - pip
+    - pybind11 >=2.2
+    - python
+  run:
+    - pybind11 >=2.2
+    - python
+
+about:
+  home: "https://github.com/kuangkzh/pylcs"
+  license: UNKNOWN
+  license_family: OTHER
+  license_file: 
+  summary: "super fast cpp implementation of longest common subsequence"
+  doc_url: 
+  dev_url: 
+
+extra:
+  recipe-maintainers:
+    - kuangkzh
+    - jeremyleung521
